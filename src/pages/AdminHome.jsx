@@ -6,7 +6,7 @@ export default function AdminHome() {
 
   // Recieve props from Outlet.
   const {users, setUsers} = useOutletContext(); 
-  console.log(users)
+  // console.log(users)
 
   // Create State to keep data when input changes.
   const [name, setName] = useState("");
@@ -32,7 +32,7 @@ export default function AdminHome() {
     // console.log(newUsers)
     setUsers(newUsers);
   }
-  
+
 
   return (
     <div className='flex flex-col items-center gap-12 h-screen'>

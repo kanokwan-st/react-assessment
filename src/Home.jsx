@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Outlet, Link } from "react-router";
+import axios from "axios";
 
 const mockEmployees = [
   {
@@ -24,10 +25,34 @@ const mockEmployees = [
 
 export default function Home() {
 
-  const [users, setUsers] = useState(mockEmployees) 
+  const [users, setUsers] = useState(mockEmployees); 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // Fetch Data ------------------------------------------
+  async function getUserData() {
+    try {
+      const res = await axios.get("https://jsd5-mock-backend.onrender.com/members");
+      // console.log(res.data);
+      setUsers(res.data)
+    } catch(error) {
+      console.log(error);
+      setError(error);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  useEffect((() => {
+    getUserData();
+  }),[])
+
+  // ---------------------------------------------------
 
   return (
     <div className="flex flex-col gap-4 m-auto w-full bg-amber-100 h-screen">
+
+      {loading && <p>loading...</p>}
 
       {/* NAV SECTION */}
       <nav>
