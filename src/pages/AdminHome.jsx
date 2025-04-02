@@ -66,11 +66,11 @@ export default function AdminHome() {
 
       <table>
         <thead>
-            <tr className='h-6'>
-                <th className='border w-40'>Name</th>
-                <th className='border w-40'>Last Name</th>
-                <th className='border w-40'>Position</th>
-                <th className='border w-40'>Action</th>
+            <tr className='h-8'>
+                <th className='border w-40 p-2'>Name</th>
+                <th className='border w-40 p-2'>Last Name</th>
+                <th className='border w-40 p-2'>Position</th>
+                <th className='border w-40 p-2'>Action</th>
             </tr>
         </thead>
 
@@ -78,11 +78,11 @@ export default function AdminHome() {
         {/* Map Detail of each User */}
         {users.map((user) => 
           (
-            <tr key={user.id} className='h-6'>
-              <td className='border'>{user.name}</td>
-              <td className='border'>{user.lastname}</td>
-              <td className='border'>{user.position}</td>
-              <td className='border text-center'>
+            <tr key={user.id} className='h-8'>
+              <td className='border p-1'>{user.name}</td>
+              <td className='border p-1'>{user.lastname}</td>
+              <td className='border p-1'>{user.position}</td>
+              <td className='border p-1 text-center'>
                 <button onClick={(e) => deleteUser(e)} value={user.id} className='bg-gray-200 text-red-400 font-semibold hover:bg-gray-300 hover:cursor-pointer'>Delete</button>
               </td>
             </tr>

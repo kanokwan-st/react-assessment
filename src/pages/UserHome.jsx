@@ -16,20 +16,20 @@ export default function UserHome() {
 
       <table>
         <thead>
-            <tr className='h-6'>
-                <th className='border w-40'>Name</th>
-                <th className='border w-40'>Last Name</th>
-                <th className='border w-40'>Position</th>
+            <tr className='h-8'>
+                <th className='border w-40 p-2'>Name</th>
+                <th className='border w-40 p-2'>Last Name</th>
+                <th className='border w-40 p-2'>Position</th>
             </tr>
         </thead>
         <tbody>
 
           {users.map(user => 
             (
-              <tr key = {user.id} className='h-6'>
-                <td className='border'>{user.name}</td>
-                <td className='border'>{user.lastname}</td>
-                <td className='border'>{user.position}</td>
+              <tr key = {user.id} className='h-8'>
+                <td className='border p-1'>{user.name}</td>
+                <td className='border p-1'>{user.lastname}</td>
+                <td className='border p-1'>{user.position}</td>
               </tr>
             ))
           }

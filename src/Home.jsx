@@ -67,13 +67,13 @@ export default function Home() {
 
 
   return (
-    <div className="flex flex-col gap-4 m-auto w-full bg-amber-100 h-screen">
+    <div className="flex flex-col gap-4 m-auto w-full bg-[#fceaff] min-h-screen">
 
       {loading && <p>loading...</p>}
 
       {/* NAV SECTION */}
-      <nav>
-        <ul className="flex gap-12 justify-end p-6 pr-30 font-bold text-lg border-b-2">
+      <nav className="mb-20 bg-[#47267c] text-white">
+        <ul className="flex gap-12 justify-end p-6 pr-30 font-bold text-lg">
           <li className="hover:cursor-pointer">
             <Link to={"/"}>Home</Link>
           </li>
