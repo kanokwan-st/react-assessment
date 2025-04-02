@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import ButtonPack from '../components/ButtonPack'
 import { useOutletContext } from 'react-router';
+import axios from 'axios';
 
 export default function AdminHome() {
 
   // Recieve props from Outlet.
-  const {users, setUsers} = useOutletContext(); 
+  const {users, setUsers, newUser, setNewUser} = useOutletContext(); 
   // console.log(users)
 
   // Create State to keep data when input changes.
@@ -17,20 +18,28 @@ export default function AdminHome() {
   function addUser(e) {
     e.preventDefault();
     const newData = {id: Date.now(), name:name, lastname: lastName, position: position};
-    const newUsers = [...users, newData];
-    setUsers(newUsers); //Update data
+
+    setNewUser(newData); //add a new data to state newUser
+
+    const updateUsers = [...users, newData];
+    setUsers(updateUsers); //Update data to users
     setName("");
     setLastName("");
     setPosition("");
   }
 
   // Delete selected user from Array Users.
-  function deleteUser(e) {
+  async function deleteUser(e) {
     e.preventDefault();
-    const selectedId = +(e.target.value);
-    const newUsers = users.filter((user) => user.id !== selectedId);
-    // console.log(newUsers)
-    setUsers(newUsers);
+    const selectedId = e.target.value;
+    const updateUsers = users.filter((user) => user.id != selectedId);
+    // console.log(updateUsers)
+    setUsers(updateUsers);
+    try {
+      const res = await axios.delete(`https://jsd5-mock-backend.onrender.com/member/${selectedId}`)
+    } catch(error) {
+      console.log(error)
+    }
   }
 
 

@@ -26,6 +26,7 @@ const mockEmployees = [
 export default function Home() {
 
   const [users, setUsers] = useState(mockEmployees); 
+  const [newUser, setNewUser] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -47,7 +48,22 @@ export default function Home() {
     getUserData();
   }),[])
 
-  // ---------------------------------------------------
+  // Send data to Database---------------------------------------
+  async function sendData() {
+    if (newUser.length === 0) return;
+    try {
+      const res = await axios.post("https://jsd5-mock-backend.onrender.com/members", newUser)
+    } catch(error) {
+      setError(error)
+    }
+  }
+
+  useEffect(() => {
+    sendData();
+  }, [newUser])
+
+  // ------------------------------------------------------------
+
 
   return (
     <div className="flex flex-col gap-4 m-auto w-full bg-amber-100 h-screen">
@@ -68,7 +84,7 @@ export default function Home() {
 
       {/* OUTLET SECTION */}
       <div>
-        <Outlet context={{users, setUsers}}/>
+        <Outlet context={{users, setUsers, newUser, setNewUser}}/>
       </div>
 
     </div>
