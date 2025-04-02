@@ -17,6 +17,10 @@ export default function AdminHome() {
   // Add new user to Array Users.
   function addUser(e) {
     e.preventDefault();
+    if (!name || !lastName || !position) {
+      alert("Please fill all detail.")
+      return;
+    }
     const newData = {id: Date.now(), name:name, lastname: lastName, position: position};
 
     setNewUser(newData); //add a new data to state newUser
@@ -44,7 +48,7 @@ export default function AdminHome() {
 
 
   return (
-    <div className='flex flex-col items-center gap-12 h-screen'>
+    <div className='flex flex-col items-center gap-12'>
       <h1 className='font-bold text-2xl'>Generation Thailand React - Admin Section</h1>
       <ButtonPack />
 

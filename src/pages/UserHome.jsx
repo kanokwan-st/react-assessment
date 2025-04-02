@@ -9,7 +9,7 @@ export default function UserHome() {
   // console.log(users);
 
   return (
-    <div className='flex flex-col items-center gap-12 h-screen'>
+    <div className='flex flex-col items-center gap-12'>
       <h1 className='font-bold text-2xl'>Generation Thailand React - User Section</h1>
 
       <ButtonPack />

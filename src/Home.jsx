@@ -36,9 +36,9 @@ export default function Home() {
       const res = await axios.get("https://jsd5-mock-backend.onrender.com/members");
       // console.log(res.data);
       setUsers(res.data)
-    } catch(error) {
-      console.log(error);
-      setError(error);
+    } catch(err) {
+      setError(err.message)
+      console.log(error)
     } finally {
       setLoading(false);
     }
@@ -50,11 +50,12 @@ export default function Home() {
 
   // Send data to Database---------------------------------------
   async function sendData() {
-    if (newUser.length === 0) return;
+    if (newUser.length === 0) return; // If no changed data.
     try {
       const res = await axios.post("https://jsd5-mock-backend.onrender.com/members", newUser)
-    } catch(error) {
-      setError(error)
+    } catch(err) {
+      setError(err.message)
+      console.log(error)
     }
   }
 
