@@ -1,3 +1,6 @@
+import React from "react";
+import { Outlet, Link } from "react-router";
+
 const mockEmployees = [
   {
     id: 0,
@@ -19,14 +22,25 @@ const mockEmployees = [
   },
 ]
 
-const Home = () => {
-
+export default function Home() {
   return (
-    <div>
-      <h1 className="bg-red-400">TEST</h1>
+    <div className="flex flex-col gap-4 m-auto w-full bg-amber-100 h-screen">
+      {/* NAV SECTION */}
+      <nav>
+        <ul className="flex gap-12 justify-end p-6 pr-30 font-bold text-lg border-b-2">
+          <li className="hover:cursor-pointer">
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li className="hover:cursor-pointer">
+            <Link to={"/owner"}>Owner</Link>
+          </li>
+        </ul>
+      </nav>
+
+      {/* OUTLET SECTION */}
+      <div>
+        <Outlet />
+      </div>
     </div>
-  )
+  );
 }
-
-
-export default Home
