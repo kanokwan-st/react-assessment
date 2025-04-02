@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from "react-router";
 
 const mockEmployees = [
@@ -23,8 +23,12 @@ const mockEmployees = [
 ]
 
 export default function Home() {
+
+  const [users, setUsers] = useState(mockEmployees) 
+
   return (
     <div className="flex flex-col gap-4 m-auto w-full bg-amber-100 h-screen">
+
       {/* NAV SECTION */}
       <nav>
         <ul className="flex gap-12 justify-end p-6 pr-30 font-bold text-lg border-b-2">
@@ -39,8 +43,12 @@ export default function Home() {
 
       {/* OUTLET SECTION */}
       <div>
-        <Outlet />
+        <Outlet context={{users, setUsers}}/>
       </div>
+
     </div>
   );
 }
+
+
+

@@ -2,7 +2,7 @@ import React from "react";
 // import { Link } from "react-router"
 import ButtonPack from "../components/ButtonPack";
 
-export default function DefaultHome() {
+export default function DefaultHome({testProp}) {
   return (
     <div className="flex flex-col items-center gap-12 h-screen">
       <h1 className="font-bold text-2xl">
